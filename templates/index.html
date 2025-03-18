@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Pferdefarb-Rechner</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .gene-block { margin-bottom: 10px; }
+    .gene-label { font-weight: bold; display: inline-block; width: 150px; }
+    .result-block { margin-top: 20px; padding: 10px; border: 1px solid #ccc; }
+    pre { background: #f8f8f8; padding: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Pferdefarb-Rechner</h1>
+
+  <form method="POST">
+    <h2>Vater-Gene</h2>
+    {% for gene, options in gene_options_vater.items() %}
+      <div class="gene-block">
+        <label class="gene-label" for="{{ gene }}">{{ gene }}:</label>
+        <select name="{{ gene }}" id="{{ gene }}">
+          {% for opt in options %}
+            <option value="{{ opt }}" {% if form_data.get(gene, default_values.get(gene, "")) == opt %}selected{% endif %}>
+              {{ opt }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+    {% endfor %}
+
+    <h2>Mutter-Gene</h2>
+    {% for gene, options in gene_options_mutter.items() %}
+      <div class="gene-block">
+        <label class="gene-label" for="{{ gene }}">{{ gene }}:</label>
+        <select name="{{ gene }}" id="{{ gene }}">
+          {% for opt in options %}
+            <option value="{{ opt }}" {% if form_data.get(gene, default_values.get(gene, "")) == opt %}selected{% endif %}>
+              {{ opt }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+    {% endfor %}
+
+    <button type="submit">Berechnen</button>
+    <button type="button" onclick="window.location.href='/'">All Clear</button>
+  </form>
+
+  {% if results %}
+    <div class="result-block">
+      <h2>Ergebnisse</h2>
+      <p><strong>Extension:</strong> {{ results.extension }}</p>
+      <p><strong>Agouti:</strong> {{ results.agouti }}</p>
+      <p><strong>Dun:</strong> {{ results.dun }}</p>
+      <p><strong>Cream:</strong> {{ results.cream }}</p>
+      <p><strong>Champagne:</strong> {{ results.champagne }}</p>
+      <p><strong>Grey:</strong> {{ results.grey }}</p>
+      <p><strong>Kit:</strong> {{ results.kit }}</p>
+      <p><strong>Silver:</strong> {{ results.silver }}</p>
+      <p><strong>Overo:</strong> {{ results.overo }}</p>
+      <p><strong>Splashed White:</strong> {{ results.splashed_white }}</p>
+      <p><strong>Basisfarben:</strong> {{ results.basisfarben }}</p>
+      <p><strong>Endfarben:</strong> {{ results.finale_farben }}</p>
+
+      <h3>Gruppierte Farben</h3>
+      <pre>
+{% for basis, farben in results.gruppen.items() %}
+{{ basis }}:
+{% for f in farben %}
+  - {{ f }}
+{% endfor %}
+{% endfor %}
+      </pre>
+    </div>
+  {% endif %}
+</body>
+</html>
