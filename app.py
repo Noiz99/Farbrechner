@@ -25,6 +25,8 @@ def vererbung_extension(ex_vater, ex_mutter):
         possible_ex_fohlen = ["eE", "EE"]
     elif ex_vater == "eE" and ex_mutter == "Ee":
         possible_ex_fohlen = ["EE", "Ee", "ee", "eE"]
+    elif ex_vater == "eE" and ex_mutter == "eE":
+        possible_ex_fohlen = ["EE", "Ee", "ee", "eE"]
     elif ex_vater == "eE" and ex_mutter == "ee":
         possible_ex_fohlen = ["Ee", "ee"]
     elif ex_vater == "ee" and ex_mutter == "EE":
