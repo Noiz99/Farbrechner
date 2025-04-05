@@ -529,7 +529,7 @@ def berechne_fohlenfarbe(
     possible_ex_fohlen = vererbung_extension(ex_vater, ex_mutter)
     possible_ag_fohlen = vererbung_agouti(ag_vater, ag_mutter)
     possible_dun_fohlen = vererbung_dun(dun_vater, dun_mutter)
-    possible_cr_fohlen = possible_cr_fohlen = vererbung_cream_pearl(cr_vater, cr_mutter)
+    possible_cr_fohlen = vererbung_cream_pearl(cr_vater, cr_mutter)
     possible_champagne = vererbung_champagne(ch_vater, ch_mutter)
     possible_grey = vererbung_grey(g_vater, g_mutter)
     possible_kit = vererbung_kit(kit_vater, kit_mutter)
