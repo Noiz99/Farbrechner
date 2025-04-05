@@ -90,159 +90,94 @@ def vererbung_agouti(ag_vater, ag_mutter):
 def vererbung_dun(dun_vater, dun_mutter):
     """
     Liefert alle möglichen Dun-Genotypen des Fohlens,
-    basierend auf den Eingaben (dd, Dd, dD, DD) für Vater und Mutter.
+    basierend auf den Eingaben (dd, dd, Dd, dD, DD) für Vater und Mutter.
     """
     possible_dun_fohlen = set()
 
-    # (dd, dd)
     if dun_vater == "dd" and dun_mutter == "dd":
         possible_dun_fohlen.update(["dd"])
-    # (dd, Dd)
     elif dun_vater == "dd" and dun_mutter == "Dd":
         possible_dun_fohlen.update(["dd", "dD"])
-    # (dd, dD)
     elif dun_vater == "dd" and dun_mutter == "dD":
         possible_dun_fohlen.update(["dd", "dD"])
-    # (dd, DD)
     elif dun_vater == "dd" and dun_mutter == "DD":
         possible_dun_fohlen.update(["dD"])
-
-    # (Dd, dd)
     elif dun_vater == "Dd" and dun_mutter == "dd":
         possible_dun_fohlen.update(["dd", "Dd"])
-    # (Dd, Dd)
     elif dun_vater == "Dd" and dun_mutter == "Dd":
         possible_dun_fohlen.update(["DD", "Dd", "dD", "dd"])
-    # (Dd, dD)
     elif dun_vater == "Dd" and dun_mutter == "dD":
         possible_dun_fohlen.update(["DD", "Dd", "dD", "dd"])
-    # (Dd, DD)
     elif dun_vater == "Dd" and dun_mutter == "DD":
         possible_dun_fohlen.update(["DD", "dD"])
-
-    # (dD, dd)
     elif dun_vater == "dD" and dun_mutter == "dd":
         possible_dun_fohlen.update(["dd", "Dd"])
-    # (dD, Dd)
     elif dun_vater == "dD" and dun_mutter == "Dd":
         possible_dun_fohlen.update(["DD", "Dd", "dD", "dd"])
-    # (dD, dD)
     elif dun_vater == "dD" and dun_mutter == "dD":
         possible_dun_fohlen.update(["DD", "Dd", "dD", "dd"])
-    # (dD, DD)
     elif dun_vater == "dD" and dun_mutter == "DD":
         possible_dun_fohlen.update(["DD", "dD"])
-
-    # (DD, dd)
     elif dun_vater == "DD" and dun_mutter == "dd":
         possible_dun_fohlen.update(["Dd"])
-    # (DD, Dd)
     elif dun_vater == "DD" and dun_mutter == "Dd":
         possible_dun_fohlen.update(["DD", "Dd"])
-    # (DD, dD)
     elif dun_vater == "DD" and dun_mutter == "dD":
         possible_dun_fohlen.update(["DD", "dD"])
-    # (DD, DD)
     elif dun_vater == "DD" and dun_mutter == "DD":
         possible_dun_fohlen.update(["DD"])
-
     return list(possible_dun_fohlen)
 
-# ---------------- Gene: Cream ----------------
-def vererbung_cream(cr_vater, cr_mutter):
+# ---------------- Gene: Cream & Pearl ----------------
+def vererbung_cream_pearl(cr_vater, cr_mutter):
     """
-    Liefert alle möglichen Cream-Genotypen des Fohlens,
-    basierend auf den Eingaben (crcr, Crcr, crCr, CrCr) für Vater und Mutter.
+    Erwartet Genotypen wie "crcr", "Crcr", "crCr", "CrCr", "plpl", "plcr", "Crpl" etc.
+    Liefert alle möglichen Allelkombinationen, standardisiert (alphabetisch sortiert).
     """
-    possible_cr_fohlen = set()
-
-    # (crcr, crcr)
-    if cr_vater == "crcr" and cr_mutter == "crcr":
-        possible_cr_fohlen.update(["crcr"])
-    # (crcr, Crcr)
-    elif cr_vater == "crcr" and cr_mutter == "Crcr":
-        possible_cr_fohlen.update(["Crcr", "crcr"])
-    # (crcr, crCr)
-    elif cr_vater == "crcr" and cr_mutter == "crCr":
-        possible_cr_fohlen.update(["Crcr", "crcr"])
-    # (crcr, CrCr)
-    elif cr_vater == "crcr" and cr_mutter == "CrCr":
-        possible_cr_fohlen.update(["CrCr"])
-
-    # (Crcr, crcr)
-    elif cr_vater == "Crcr" and cr_mutter == "crcr":
-        possible_cr_fohlen.update(["Crcr", "crcr"])
-    # (Crcr, Crcr)
-    elif cr_vater == "Crcr" and cr_mutter == "Crcr":
-        # Alle vier möglich: CrCr, Crcr, crCr, crcr
-        possible_cr_fohlen.update(["CrCr", "Crcr", "crCr", "crcr"])
-    # (Crcr, crCr)
-    elif cr_vater == "Crcr" and cr_mutter == "crCr":
-        possible_cr_fohlen.update(["CrCr", "Crcr", "crCr", "crcr"])
-    # (Crcr, CrCr)
-    elif cr_vater == "Crcr" and cr_mutter == "CrCr":
-        possible_cr_fohlen.update(["CrCr", "crCr"])
-
-    # (crCr, crcr)
-    elif cr_vater == "crCr" and cr_mutter == "crcr":
-        possible_cr_fohlen.update(["Crcr", "crcr"])
-    # (crCr, Crcr)
-    elif cr_vater == "crCr" and cr_mutter == "Crcr":
-        possible_cr_fohlen.update(["CrCr", "Crcr", "crCr", "crcr"])
-    # (crCr, crCr)
-    elif cr_vater == "crCr" and cr_mutter == "crCr":
-        possible_cr_fohlen.update(["CrCr", "crCr", "Crcr", "crcr"])
-    # (crCr, CrCr)
-    elif cr_vater == "crCr" and cr_mutter == "CrCr":
-        possible_cr_fohlen.update(["CrCr", "crCr"])
-
-    # (CrCr, crcr)
-    elif cr_vater == "CrCr" and cr_mutter == "crcr":
-        possible_cr_fohlen.update(["CrCr"])
-    # (CrCr, Crcr)
-    elif cr_vater == "CrCr" and cr_mutter == "Crcr":
-        possible_cr_fohlen.update(["CrCr", "crCr"])
-    # (CrCr, crCr)
-    elif cr_vater == "CrCr" and cr_mutter == "crCr":
-        possible_cr_fohlen.update(["CrCr", "crCr"])
-    # (CrCr, CrCr)
-    elif cr_vater == "CrCr" and cr_mutter == "CrCr":
-        possible_cr_fohlen.update(["CrCr"])
-
-    return list(possible_cr_fohlen)
+    possibilities = set()
+    
+    def split_allele(geno):
+        # Zerlegt einen 4-stelligen String in zwei Allele (je 2 Zeichen).
+        return [geno[:2], geno[2:]]
+    
+    alleles_vater = split_allele(cr_vater)
+    alleles_mutter = split_allele(cr_mutter)
+    
+    for av in alleles_vater:
+        for am in alleles_mutter:
+            # Sortiere, damit z.B. "Crpl" und "plCr" als gleich erkannt werden
+            combo = "".join(sorted([av, am]))
+            possibilities.add(combo)
+    return list(possibilities)
 
 # ---------------- Gene: Champagne ----------------
 def vererbung_champagne(ch_vater, ch_mutter):
     possibilities = set()
     if ch_vater == "ChCh" and ch_mutter == "ChCh":
         possibilities.add("ChCh")
-    elif (ch_vater == "ChCh" and ch_mutter == "Chch") or (ch_vater == "ChCh" and ch_mutter == "chCh"):
+    elif (ch_vater == "ChCh" and ch_mutter in ["Chch", "chCh"]):
         possibilities.update(["ChCh", "Chch"])
     elif (ch_vater == "ChCh" and ch_mutter == "chch"):
         possibilities.add("Chch")
-    elif (ch_vater == "Chch" and ch_mutter == "Chch") or (ch_vater == "Chch" and ch_mutter == "chCh"):
+    elif (ch_vater in ["Chch", "chCh"] and ch_mutter in ["Chch", "chCh"]):
         possibilities.update(["Chch", "ChCh", "chch", "chCh"])
     elif (ch_vater == "Chch" and ch_mutter == "chch"):
         possibilities.update(["Chch", "chch"])
-    elif (ch_vater == "chCh" and ch_mutter == "Chch") or (ch_vater == "chCh" and ch_mutter == "chCh"):
-        possibilities.update(["Chch", "ChCh", "chch", "chCh"])
-    elif (ch_vater == "chCh" and ch_mutter == "chch"):
+    elif (ch_vater in ["chCh"] and ch_mutter == "chch"):
         possibilities.update(["Chch", "chch"])
-    elif (ch_vater == "chch" and ch_mutter == "Chch") or (ch_vater == "chch" and ch_mutter == "chCh"):
-        possibilities.update(["chch", "chCh"])
-    elif (ch_vater == "Chch" and ch_mutter == "ChCh") or (ch_vater == "chCh" and ch_mutter == "ChCh"):
+    elif (ch_vater in ["Chch"] and ch_mutter in ["ChCh"]) or (ch_vater in ["chCh"] and ch_mutter in ["ChCh"]):
         possibilities.update(["ChCh", "chCh"])
     elif (ch_vater == "chch" and ch_mutter == "ChCh"):
         possibilities.update(["chCh"])
-    elif (ch_vater == "Chch" and ch_mutter == "Chch") or (ch_vater == "chCh" and ch_mutter == "Chch"):
+    elif (ch_vater in ["Chch"] and ch_mutter in ["Chch"]) or (ch_vater in ["chCh"] and ch_mutter in ["Chch"]):
         possibilities.update(["ChCh", "chCh", "chch", "Chch"])
     elif (ch_vater == "chch" and ch_mutter == "Chch"):
         possibilities.update(["chCh", "chch"])
-    elif (ch_vater == "Chch" and ch_mutter == "chCh") or (ch_vater == "chCh" and ch_mutter == "chCh"):
+    elif (ch_vater in ["Chch"] and ch_mutter in ["chCh"]) or (ch_vater in ["chCh"] and ch_mutter in ["chCh"]):
         possibilities.update(["ChCh", "chCh", "chch", "Chch"])
     elif (ch_vater == "chch" and ch_mutter == "chCh"):
         possibilities.update(["chCh", "chch"])
-    elif (ch_vater == "Chch" and ch_mutter == "chch") or (ch_vater == "chCh" and ch_mutter == "chch"):
+    elif (ch_vater in ["Chch"] and ch_mutter == "chch") or (ch_vater in ["chCh"] and ch_mutter == "chch"):
         possibilities.update(["Chch", "chch"])
     else:
         possibilities.add("chch")
@@ -401,8 +336,6 @@ def splashed_white_effect(spl_genotype):
         return "Splashed White"
 
 def apply_splashed_white_effect(end_colors, spl_white_combinations):
-    # Falls mindestens eine Kombination nicht "splspl" ist,
-    # hänge den Effekt "Splashed White" an alle Endfarben an.
     if not all(geno == "splspl" for geno in spl_white_combinations):
         return [color + " Splashed White" for color in end_colors]
     else:
@@ -540,21 +473,22 @@ def berechne_ende_gueltige_farbe(moegliche_basisfarben, cr_combination, dun_comb
         for farbe in moegliche_basisfarben:
             if farbe == "Chestnut":
                 finale_farben.append("Red Dun")
-                if any(x in cr_combination for x in ["CrCr", "Crcr", "crCr"]):
+                if any(x in cp_combination for x in ["CrCr", "Crcr", "crCr"]):
                     finale_farben.append("Dunalino")
             elif farbe in ["Bay", "Wildbay"]:
                 finale_farben.append("Classic Dun")
-                if any(x in cr_combination for x in ["CrCr", "Crcr", "crCr"]):
+                if any(x in cp_combination for x in ["CrCr", "Crcr", "crCr"]):
                     finale_farben.append("Dunskin")
             elif farbe == "Sealbrown":
                 finale_farben.append("Brown Dun")
             elif farbe == "Black":
                 finale_farben.append("Grulla")
-                if any(x in cr_combination for x in ["CrCr", "Crcr", "crCr"]):
+                if any(x in cp_combination for x in ["CrCr", "Crcr", "crCr"]):
                     finale_farben.append("Smoky Grulla")
     for farbe in moegliche_basisfarben:
         finale_farben.append(farbe)
-        if "CrCr" in cr_combination:
+        # Cream-Effekt
+        if any(x in cr_combination for x in ["CrCr"]):
             if farbe == "Chestnut":
                 finale_farben.append("Cremello")
             elif farbe in ["Wildbay", "Bay"]:
@@ -563,15 +497,26 @@ def berechne_ende_gueltige_farbe(moegliche_basisfarben, cr_combination, dun_comb
                 finale_farben.append("SealBrown Cream")
             elif farbe == "Black":
                 finale_farben.append("Smoky Cream")
-        if "Crcr" in cr_combination or "crCr" in cr_combination:
+        # Pearl-Effekt: Double Pearl
+        if "plpl" in cr_combination:
             if farbe == "Chestnut":
-                finale_farben.append("Palomino")
+                finale_farben.append("Apricot")
             elif farbe in ["Wildbay", "Bay"]:
-                finale_farben.append("Buckskin")
+                finale_farben.append("Pearl Bay")
             elif farbe == "Sealbrown":
-                finale_farben.append("Smoky Brown")
+                finale_farben.append("Pearl Brown")
             elif farbe == "Black":
-                finale_farben.append("Smoky Black")
+                finale_farben.append("Pearl Black")
+        # Intermediärer Effekt: 1x Pearl + 1x Cream (sowohl "Crpl" als auch "plCr")
+        if any(x in cp_combination for x in ["Crpl", "plCr"]):
+            if farbe == "Chestnut":
+                finale_farben.append("Cream Pearl Apricot")
+            elif farbe in ["Wildbay", "Bay"]:
+                finale_farben.append("Cream Pearl Bay")
+            elif farbe == "Sealbrown":
+                finale_farben.append("Cream Pearl Sealbrown")
+            elif farbe == "Black":
+                finale_farben.append("Cream Pearl Black")
     return list(set(finale_farben))
 
 # ---------------- Hauptfunktion ----------------
@@ -584,7 +529,7 @@ def berechne_fohlenfarbe(
     possible_ex_fohlen = vererbung_extension(ex_vater, ex_mutter)
     possible_ag_fohlen = vererbung_agouti(ag_vater, ag_mutter)
     possible_dun_fohlen = vererbung_dun(dun_vater, dun_mutter)
-    possible_cr_fohlen = vererbung_cream(cr_vater, cr_mutter)
+    possible_cr_fohlen = vererbung_cream(cr_vater, cr_mutter)  # Cream & Pearl kombiniert!
     possible_champagne = vererbung_champagne(ch_vater, ch_mutter)
     possible_grey = vererbung_grey(g_vater, g_mutter)
     possible_kit = vererbung_kit(kit_vater, kit_mutter)
@@ -659,17 +604,13 @@ def index():
         "patn1_mutter": "p1p1"
     }
     form_data = {}
-    """
-    Zeigt ein Formular mit zwei separaten Abschnitten:
-    - alle Gene vom Vater
-    - alle Gene von der Mutter
-    """
+
     # 1) Dictionary nur für Vater-Gene
     gene_options_vater = {
         "ex_vater":  ["EE", "Ee", "eE", "ee"],
-        "ag_vater":  ["ApAp", "A1A1", "AtAt", "a0a0", "ApA1", "A1Ap", "ApAt", "AtAp", "Apa0", "a0Ap", "A1At", "AtA1", "A1a0", "a0A1", "Ata0",           "a0At"],
+        "ag_vater":  ["ApAp", "A1A1", "AtAt", "a0a0", "ApA1", "A1Ap", "ApAt", "AtAp", "Apa0", "a0Ap", "A1At", "AtA1", "A1a0", "a0A1", "Ata0", "a0At"],
         "dun_vater": ["dd", "DD", "Dd", "dD"],
-        "cr_vater":  ["crcr", "CrCr", "Crcr", "crCr"],
+        "cr_vater":  ["crcr", "CrCr", "Crcr", "crCr", "plpl", "plcr", "crpl", "Crpl", "plCr"],
         "ch_vater":  ["ChCh", "Chch", "chCh", "chch"],
         "g_vater":   ["gg", "Gg", "gG", "GG"],
         "kit_vater": ["0000", "TOTO", "TO00", "00TO", "RnRn", "Rn00", "00Rn", "SB00", "00SB", "SBSB", "WI00", "00WI", "TORn", "RnTO", "RnSB", "SBRn", "TOSB", "SBTO"],
@@ -683,9 +624,9 @@ def index():
     # 2) Dictionary nur für Mutter-Gene
     gene_options_mutter = {
         "ex_mutter":  ["EE", "Ee", "eE", "ee"],
-        "ag_mutter": ["ApAp", "A1A1", "AtAt", "a0a0", "ApA1", "A1Ap", "ApAt", "AtAp", "Apa0", "a0Ap", "A1At", "AtA1", "A1a0", "a0A1", "Ata0",           "a0At"],
+        "ag_mutter": ["ApAp", "A1A1", "AtAt", "a0a0", "ApA1", "A1Ap", "ApAt", "AtAp", "Apa0", "a0Ap", "A1At", "AtA1", "A1a0", "a0A1", "Ata0", "a0At"],
         "dun_mutter": ["dd", "DD", "Dd", "dD"],
-        "cr_mutter":  ["crcr", "CrCr", "Crcr", "crCr"],
+        "cr_mutter":  ["crcr", "CrCr", "Crcr", "crCr", "plpl", "plcr", "crpl", "Crpl", "plCr"],
         "ch_mutter":  ["ChCh", "Chch", "chCh", "chch"],
         "g_mutter":   ["gg", "Gg", "gG", "GG"],
         "kit_mutter":["0000", "TOTO", "TO00", "00TO", "RnRn", "Rn00", "00Rn", "SB00", "00SB", "SBSB", "WI00", "00WI", "TORn", "RnTO", "RnSB", "SBRn", "TOSB", "SBTO"],
@@ -710,9 +651,7 @@ def index():
         for gene in gene_options_mutter.keys():
             form_data[gene] = request.form.get(gene, "")
 
-        # c) An deine Berechnungsfunktion übergeben
-        #    Achte genau auf die Reihenfolge der Argumente:
-        #    (ex_vater, ex_mutter, ag_vater, ag_mutter, usw.)
+        # c) An die Berechnungsfunktion übergeben
         results = berechne_fohlenfarbe(
             form_data["ex_vater"],     form_data["ex_mutter"],
             form_data["ag_vater"],     form_data["ag_mutter"],
@@ -736,5 +675,6 @@ def index():
         form_data=form_data,
         default_values=default_values
     )
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")
