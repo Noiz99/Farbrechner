@@ -508,7 +508,7 @@ def berechne_ende_gueltige_farbe(moegliche_basisfarben, cr_combination, dun_comb
             elif farbe == "Black":
                 finale_farben.append("Pearl Black")
         # Intermediärer Effekt: 1x Pearl + 1x Cream (sowohl "Crpl" als auch "plCr")
-        if any(x in cp_combination for x in ["Crpl", "plCr"]):
+        if any(x in cr_combination for x in ["Crpl", "plCr"]):
             if farbe == "Chestnut":
                 finale_farben.append("Cream Pearl Apricot")
             elif farbe in ["Wildbay", "Bay"]:
@@ -529,7 +529,7 @@ def berechne_fohlenfarbe(
     possible_ex_fohlen = vererbung_extension(ex_vater, ex_mutter)
     possible_ag_fohlen = vererbung_agouti(ag_vater, ag_mutter)
     possible_dun_fohlen = vererbung_dun(dun_vater, dun_mutter)
-    possible_cr_fohlen = vererbung_cream(cr_vater, cr_mutter)  # Cream & Pearl kombiniert!
+    possible_cr_fohlen = possible_cr_fohlen = vererbung_cream_pearl(cr_vater, cr_mutter)
     possible_champagne = vererbung_champagne(ch_vater, ch_mutter)
     possible_grey = vererbung_grey(g_vater, g_mutter)
     possible_kit = vererbung_kit(kit_vater, kit_mutter)
