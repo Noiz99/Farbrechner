@@ -510,7 +510,7 @@ def berechne_ende_gueltige_farbe(moegliche_basisfarben, cr_combination, dun_comb
         # Intermediärer Effekt: 1x Pearl + 1x Cream (sowohl "Crpl" als auch "plCr")
         if any(x in cr_combination for x in ["Crpl", "plCr"]):
             if farbe == "Chestnut":
-                finale_farben.append("Cream Pearl Apricot")
+                finale_farben.append("Cream Pearl Chestnut")
             elif farbe in ["Wildbay", "Bay"]:
                 finale_farben.append("Cream Pearl Bay")
             elif farbe == "Sealbrown":
