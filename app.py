@@ -473,17 +473,17 @@ def berechne_ende_gueltige_farbe(moegliche_basisfarben, cr_combination, dun_comb
         for farbe in moegliche_basisfarben:
             if farbe == "Chestnut":
                 finale_farben.append("Red Dun")
-                if any(x in cp_combination for x in ["CrCr", "Crcr", "crCr"]):
+                if any(x in cr_combination for x in ["CrCr", "Crcr", "crCr"]):
                     finale_farben.append("Dunalino")
             elif farbe in ["Bay", "Wildbay"]:
                 finale_farben.append("Classic Dun")
-                if any(x in cp_combination for x in ["CrCr", "Crcr", "crCr"]):
+                if any(x in cr_combination for x in ["CrCr", "Crcr", "crCr"]):
                     finale_farben.append("Dunskin")
             elif farbe == "Sealbrown":
                 finale_farben.append("Brown Dun")
             elif farbe == "Black":
                 finale_farben.append("Grulla")
-                if any(x in cp_combination for x in ["CrCr", "Crcr", "crCr"]):
+                if any(x in cr_combination for x in ["CrCr", "Crcr", "crCr"]):
                     finale_farben.append("Smoky Grulla")
     for farbe in moegliche_basisfarben:
         finale_farben.append(farbe)
